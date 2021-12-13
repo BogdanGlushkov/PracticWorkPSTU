@@ -63,7 +63,6 @@ void task2_5()
 void task2_6()
 {
     int n;
-    setlocale(LC_ALL, "Rus");
     cin >> n;
     if (n > 2) {
         for (int i = 0; i <= n; i++) {
@@ -77,7 +76,7 @@ void task2_6()
         }
     }
     else {
-        cout << "Введённое число меньше 2";
+        cout << "The number you have type is < 2";
     }
     return;
 }
