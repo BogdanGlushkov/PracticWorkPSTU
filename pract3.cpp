@@ -175,7 +175,8 @@ void task3_8()
 int main()
 {
     int option;
-    cout << "Type tne number of resh 3.(Numbers: 1,2,3,4,5,6,7,8) " << endl;
+    cout << "Type tne number of resh 3_... " << endl
+        << "Valuable numbers: 1,2,3,4,5,6,7,8. " << endl;
     cin >> option;
     switch (option)
     {
