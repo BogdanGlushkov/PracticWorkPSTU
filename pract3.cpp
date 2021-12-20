@@ -39,7 +39,9 @@ void task3_2()
 {
     const int n = 11;
     int arr[n] = { 1, 10, 65, 39, 48, 67, 47, 18, 90, 38, 11 };
-    int temp;
+    int tempmin = 0;
+    int temp = 0;
+    int min_index = 0;
 
     for (int i = 0; i < n; i++)
     {
@@ -47,12 +49,58 @@ void task3_2()
     }
     cout << endl;
 
+    for (int i =  0; i < (n - 1); i++)
+    {
+        min_index = i;
+        for (int j = (i + 1); j < n; j++)
+        {
+            if (arr[j] < arr[min_index])
+            {
+                min_index = j;
+            }
 
+            temp = arr[min_index];
+            arr[min_index] = arr[i];
+            arr[i] = temp;
+        }
+    }
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
 }
 
 void task3_3()
 {
-    return;
+    const int n = 11;
+    int arr[n] = { 1, 10, 65, 39, 48, 67, 47, 18, 90, 38, 11 };
+    int temp = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = 0; j < (n - 1 - i); j++)
+        {
+            if (arr[j] > arr[j + 1])
+            {
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
 }
 
 void task3_4()
@@ -175,8 +223,7 @@ void task3_8()
 int main()
 {
     int option;
-    cout << "Type tne number of resh 3_... " << endl
-        << "Valuable numbers: 1,2,3,4,5,6,7,8. " << endl;
+    cout << "Type tne number of resh 3.(Numbers: 1,2,3,4,5,6,7,8) " << endl;
     cin >> option;
     switch (option)
     {
