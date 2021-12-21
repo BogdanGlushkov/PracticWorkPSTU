@@ -525,7 +525,29 @@ void task2_22()
 }
 
 void task2_23()
-{}
+{
+    float n, max = -1;
+    int count = 0;
+    cout << "Type N - ";
+    cin >> n;
+
+    for (float i = 1; i <= n; i++)
+    {
+        if ((round(sin(n + (i / n))) * 10 / 10) > max)
+        {
+            max = (round(sin(n + (i / n))) * 10 / 10);
+            count = 1;
+        }
+        else
+            if ((round(sin(n + (i / n))) * 10 / 10) == max)
+            {
+                ++count;
+            }
+    }
+    cout << "Max = " << max << endl
+        << "The first max element = " << max << " there is " << count << " elements = max" << endl;
+    return;
+}
 
 
 int main()
