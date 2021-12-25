@@ -4,7 +4,7 @@
 using namespace std;
 
 //    f(x) = 3 * sin(pow(x,0.5)) + 0.35 * x - 3.8
-//    f'(x) = 3 * cos(x^0.5) + 0.35 
+//    f'(x) = 3 * cos(pow(x,0.5)) + 0.35 
 //    f''(x) = -(3 (cos(sqrt(x)) + sqrt(x) sin(sqrt(x))))/(4 x^(3/2))
 //    [a, b]
 //     a = 2, b = 3
@@ -14,14 +14,15 @@ using namespace std;
 
 void nuton()
 {
-    float fA, fB, fpa, fpb, x, xPrevious = 0;
+    float x, xPrevious;
     double epsilon = 0.000001;
     x = 2;
+    xPrevious = 0;
 
     while (abs(x - xPrevious) > epsilon)
     {
         xPrevious = x;
-        x = xPrevious - ((3 * sin(pow(x,0.5)) + 0.35 * x - 3.8) * (-(3 * (cos(pow(x, 0.5)) + sqrt(x) * sin(pow(x, 0.5)))) / (4 *pow(x ,1.5))));
+        x = xPrevious - ((3 * sin(pow(x,0.5)) + 0.35 * x - 3.8) * (3 * cos(pow(x, 0.5)) + 0.35));
     }
     cout << "There is a x = " << x << endl;
    
@@ -51,24 +52,24 @@ void del()
 //    f'(x) = 3 * cos(x^0.5) + 0.35 
 //    f''(x) = -(3 (cos(sqrt(x)) + sqrt(x) sin(sqrt(x))))/(4 x^(3/2))
 //    [2, 3]
-//    f(x) = x + λ(3Sin(x^0.5+0.35x - 3.8)
+//    f(x) = x + λ(3Sin(x^0.5)+0.35x - 3.8)
 //    -1/r < λ < 0, если f'(x) > 0
 //    0 < λ < 1/r, если f'(x) < 0
 //    r = max(|f'(a)|, |f'(b)|) = 0.21
-//    λ = -1/0.21 = -4.76
+//    λ = -1/0.56 = -1.79
 
 void implication()
 {
     float x, xPrev;
-    double lambda = -4.76; // -1/0.21
-    x = 3; // можно выбрать любое x0 из [2, 3] — выбранного заранее промежутка
+    double lambda = -1.79; // -1/0.21
+    x = 2; // можно выбрать любое x0 из [2, 3] — выбранного заранее промежутка
     xPrev = 0; //делаем заведомо сильно меньше x, чтобы цикл правильно сработал
     double eps = 0.000001;
 
     while (abs(x - xPrev) > eps)
     {
         xPrev = x;
-        x = lambda * (3 * sin(pow(xPrev, 0.5)) + 0.35 * xPrev - 3.8);
+        x = lambda * (3 * sin(pow(xPrev, 0.5)) + 0.35 * xPrev - 3.8) + xPrev;
     }
     cout << "X = " << x << endl;
 }
