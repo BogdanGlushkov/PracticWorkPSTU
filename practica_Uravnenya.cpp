@@ -28,7 +28,7 @@ void nuton()
    
 }
 
-void del()
+void hd()
 {
     float a, b, c;
     float fA, fB, fC;
@@ -83,7 +83,7 @@ int main()
     switch (option)
     {
     case 'N': nuton(); break;
-    case 'D': del(); break;
+    case 'D': hd(); break;
     case 'I': implication(); break;
     }
 }
