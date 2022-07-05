@@ -13,7 +13,7 @@
 //#define x A0
 //#define y A6
 //#define z A7
-#define Period 500
+//#define Period 500
 
 unsigned long timing = 0; // перепенная счетчик
 
