@@ -25,7 +25,7 @@ uint8_t curR = 1;     // Текущее состояние датчика лин
 uint8_t curC = 1;
 uint8_t curL = 1;
 
-uint8_t global = 0; // Текущее состояние системы
+uint8_t global = 111; // Текущее состояние системы
 bool f = false; // переменная Stop
 
 //int motorSpeed = 500; //  скорость мотора
@@ -137,7 +137,7 @@ void stop(bool f)
 void loop() {
   global = digitalRead(L) * 100 + digitalRead(C) * 10 + digitalRead(R);
 
-  switch (digitalRead(L) * 100 + digitalRead(C) * 10 + digitalRead(R))
+  switch (global)
   {
     case 0: // 000
       {
