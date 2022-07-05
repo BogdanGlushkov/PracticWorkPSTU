@@ -77,14 +77,20 @@ void backward(int motorSpeed)
   analogWrite(PWMB, motorSpeed);
 }
 
-void forward()
-{
+void forward(int tempspeed)
+{   
+  tempspeed = motorSpeed;
   digitalWrite(AIN1, 1);      // движение вперед
   digitalWrite(AIN2, 0);
   digitalWrite(BIN1, 1);
   digitalWrite(BIN2, 0);
-  analogWrite(PWMA, 1000);
-  analogWrite(PWMB, 1000);
+  if(millis() - temptime <= 100)
+  {
+  temptime = millis();
+  tempspeed++;
+  analogWrite(PWMA, tempspeed);
+  analogWrite(PWMB, tempspeed);
+  }
 }
 
 void stop(bool f)
@@ -140,15 +146,15 @@ void loop() {
           break;
         }
 
-        backward(500);
+        backward(250);
         delay(200);
-        left(500);
+        left(150);
         delay(400);
       }
 
     case 111: // 111
       {
-        forward();
+        forward(150);
 
         if (digitalRead(L) + digitalRead(C) + digitalRead(R) == 0)
         {
@@ -160,7 +166,7 @@ void loop() {
 
     case 110: // 110
       {
-        left(500);
+        left(150);
 
         if (digitalRead(L) + digitalRead(C) + digitalRead(R) == 0)
         {
@@ -170,7 +176,7 @@ void loop() {
 
     case 11: // 011
       {
-        right(500);
+        right(150);
 
 
         if (digitalRead(L) + digitalRead(C) + digitalRead(R) == 0)
@@ -181,8 +187,8 @@ void loop() {
 
     case 101: // 101
       {
-        backward(500);
-        left(500);
+        backward(200);
+        left(150);
 
         if (digitalRead(L) + digitalRead(C) + digitalRead(R) == 0)
         {
@@ -192,7 +198,7 @@ void loop() {
 
     case 1: // 001
       {
-        right(500);
+        right(150);
 
         if (digitalRead(L) + digitalRead(C) + digitalRead(R) == 0)
         {
@@ -202,7 +208,7 @@ void loop() {
 
     case 100: // 100
       {
-        left(500);
+        left(150);
 
         if (digitalRead(L) + digitalRead(C) + digitalRead(R) == 0)
         {
@@ -212,8 +218,8 @@ void loop() {
 
     case 10: // 010
       {
-        backward(700);
-        left(500);
+        backward(200);
+        left(150);
 
         if (digitalRead(L) + digitalRead(C) + digitalRead(R) == 0)
         {
